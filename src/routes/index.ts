@@ -7,6 +7,7 @@ import History from '../pages/History.vue'
 import Timelapse from '../pages/Timelapse.vue'
 import Machine from '../pages/Machine.vue'
 import { AsyncComponent, Component } from 'vue'
+import Dashboard2 from '../pages/Dashboard2.vue'
 
 import {
     mdiMonitorDashboard,
@@ -30,6 +31,16 @@ const routes: AppRoute[] = [
         alwaysShow: true,
         showInNavi: true,
         position: 10,
+    },
+    {
+        name: 'dashboard2',
+        title: 'Dashboard2',
+        path: '/dashboard2',
+        icon: mdiMonitorDashboard,
+        component: Dashboard2,
+        alwaysShow: true,
+        showInNavi: true,
+        position: 15,
     },
     {
         name: 'farm',
