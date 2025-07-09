@@ -1,1 +1,0 @@
-import{S as e}from"./Viewer-B9X4qiKo.js";const t="logDepthDeclaration",r="#ifdef LOGARITHMICDEPTH\nuniform logarithmicDepthConstant: f32;varying vFragmentDepth: f32;\n#endif\n";e.IncludesShadersStoreWGSL[t]=r;
