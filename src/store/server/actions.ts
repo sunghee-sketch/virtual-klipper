@@ -22,10 +22,10 @@ export const actions: ActionTree<ServerState, RootState> = {
         // identify client
         try {
             const connection = await Vue.$socket.emitAndWait('server.connection.identify', {
-                client_name: 'mainsail',
+                client_name: 'custom-mainsail',
                 version: rootState.packageVersion,
                 type: 'web',
-                url: 'https://github.com/mainsail-crew/mainsail',
+                url: 'https://github.com/sunghee-sketch/virtual-klipper',
             })
             commit('setConnectionId', connection.connection_id)
         } catch (e: any) {
