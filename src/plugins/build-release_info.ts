@@ -19,8 +19,8 @@ export default function buildReleaseInfo(): PluginOption {
                 )
                 await releaseInfoFile.writeFile(
                     JSON.stringify({
-                        project_name: 'mainsail',
-                        project_owner: 'mainsail-crew',
+                        project_name: 'virtual-klipper',
+                        project_owner: 'sunghee-sketch',
                         version: `v${versionIdentifier}`,
                     })
                 )
