@@ -36,14 +36,14 @@ jobs:
           switches: -avzr --delete
           path: mainsail/dist/
           remote_path: /var/www/html/
-          remote_host: ${{ 192.168.0.181 }}
+          remote_host: ${{ secrets.PI_HOST}}
           remote_user: pi
           remote_key: ${{ secrets.PI_SSH_KEY }}
 
       - name: Set permissions
         uses: appleboy/ssh-action@v0.1.5
         with:
-          host: ${{ 192.168.0.181 }}
+          host: ${{ secrets.PI_HOST }}
           username: pi
           key: ${{ secrets.PI_SSH_KEY }}
           script: |
