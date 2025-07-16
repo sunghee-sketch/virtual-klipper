@@ -16,9 +16,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
-          cache: "npm"
-          cache-dependency-path: "./mainsail/package-lock.json"
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: './mainsail/package-lock.json'
 
       - name: Install dependencies
         run: |
@@ -36,14 +36,14 @@ jobs:
           switches: -avzr --delete
           path: mainsail/dist/
           remote_path: /var/www/html/
-          remote_host: ${{ secrets.PI_HOST }}
+          remote_host: ${{ 192.168.0.181 }}
           remote_user: pi
           remote_key: ${{ secrets.PI_SSH_KEY }}
 
       - name: Set permissions
         uses: appleboy/ssh-action@v0.1.5
         with:
-          host: ${{ secrets.PI_HOST }}
+          host: ${{ 192.168.0.181 }}
           username: pi
           key: ${{ secrets.PI_SSH_KEY }}
           script: |
