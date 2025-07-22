@@ -22,12 +22,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd mainsail
+          # cd mainsail
           npm ci
 
       - name: Build
         run: |
-          cd mainsail  
+          # cd mainsail  
           npm run build
 
       - name: Deploy to Raspberry Pi
