@@ -14,10 +14,20 @@
             body {
                 font-family: 'Arial', sans-serif;
                 background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-                height: 100vh;
+                min-height: 100vh;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                padding: 20px;
+            }
+
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 400px;
             }
 
             .login-container {
@@ -98,37 +108,109 @@
             }
 
             .success-message {
-                color: #27ae60;
+                color: #4a90e2;
                 text-align: center;
                 margin-top: 10px;
                 display: none;
             }
+
+            /* 푸터 스타일 */
+            .footer {
+                margin-top: 20px;
+                text-align: center;
+                padding: 15px 0;
+            }
+
+            .footer-links {
+                margin-bottom: 8px;
+            }
+
+            .footer-links a {
+                color: #a0a0a0;
+                text-decoration: none;
+                font-size: 12px;
+                transition: color 0.2s ease;
+            }
+
+            .footer-links a:hover {
+                color: #4a90e2;
+            }
+
+            .footer-links .separator {
+                color: #666;
+                margin: 0 8px;
+                font-size: 12px;
+            }
+
+            .footer-copyright {
+                color: #888;
+                font-size: 11px;
+            }
+
+            .footer-copyright .logo {
+                color: #4a90e2;
+                font-weight: bold;
+            }
+
+            /* 로그인 컨테이너 하단 여백 조정 */
+            .login-container {
+                margin-bottom: 0;
+            }
         </style>
     </head>
     <body>
-        <div class="login-container">
-            <div class="login-header">
-                <img src="/img/alhs-logo.svg" alt="ALHS Logo" style="width: 80px; height: auto; margin-bottom: 15px" />
-                <h1>ALHS</h1>
+        <div class="main-content">
+            <div class="login-container">
+                <div class="login-header">
+                    <img
+                        src="/img/alhs-logo.svg"
+                        alt="ALHS Logo"
+                        style="width: 80px; height: auto; margin-bottom: 15px" />
+                    <h1>ALHS</h1>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">사용자명</label>
+                        <input type="text" id="username" name="username" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+
+                    <button type="submit" class="login-btn">로그인</button>
+                </form>
+
+                <div id="errorMessage" class="error-message">사용자명 또는 비밀번호가 올바르지 않습니다.</div>
+
+                <div id="successMessage" class="success-message">로그인 성공! 리다이렉트 중...</div>
             </div>
 
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">사용자명</label>
-                    <input type="text" id="username" name="username" required />
+            <!-- 푸터 섹션 -->
+            <div class="footer">
+                <div class="footer-links">
+                    <!-- GitHub 링크: 실제 저장소 URL로 변경하세요 -->
+                    <a href="https://github.com/ALHS-Project/ALHS?tab=readme-ov-file" target="_blank">GitHub</a>
+                    <span class="separator">|</span>
+                    <a href="https://alhs-project.github.io/ALHS/" target="_blank">MyDocs</a>
+                    <span class="separator">|</span>
+                    <a href="#" onclick="alert('이용약관 페이지로 이동')">이용약관</a>
+                    <span class="separator">|</span>
+                    <a href="#" onclick="alert('개인정보처리방침 페이지로 이동')">개인정보처리방침</a>
                 </div>
-
-                <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" id="password" name="password" required />
+                <div class="footer-copyright">
+                    <span class="logo">
+                        <img
+                            src="/img/alhs-logo.svg"
+                            alt="ALHS Logo"
+                            style="width: 16px; height: auto; vertical-align: middle; margin-right: 4px" />
+                        ALHS
+                    </span>
+                    Copyright © ALHS Corp. All Rights Reserved.
                 </div>
-
-                <button type="submit" class="login-btn">로그인</button>
-            </form>
-
-            <div id="errorMessage" class="error-message">사용자명 또는 비밀번호가 올바르지 않습니다.</div>
-
-            <div id="successMessage" class="success-message">로그인 성공! 리다이렉트 중...</div>
+            </div>
         </div>
 
         <script>
@@ -149,12 +231,20 @@
 
                     // 2초 후 메인 페이지로 리다이렉트
                     setTimeout(() => {
+                        // 세션 스토리지에서 로그인 성공 플래그 제거
+                        sessionStorage.removeItem('loginSuccess')
                         window.location.href = '/'
                     }, 2000)
                 } else {
                     document.getElementById('successMessage').style.display = 'none'
                     document.getElementById('errorMessage').style.display = 'block'
                 }
+            })
+
+            // 페이지 로드 시 로그인 성공 메시지 숨기기
+            window.addEventListener('load', function () {
+                document.getElementById('successMessage').style.display = 'none'
+                document.getElementById('errorMessage').style.display = 'none'
             })
         </script>
     </body>
