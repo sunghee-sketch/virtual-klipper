@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <script>
+            // 로그인 상태 확인 후 리다이렉트
+            if (window.location.pathname === '/') {
+                const isLoggedIn = sessionStorage.getItem('isLoggedIn')
+                if (!isLoggedIn) {
+                    window.location.href = '/login.html'
+                }
+            }
+        </script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />

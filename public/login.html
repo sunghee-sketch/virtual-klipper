@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ALHS 로그인</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .login-container {
+                background: rgba(39, 39, 39, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+                width: 100%;
+                max-width: 400px;
+                border: 1px solid rgba(60, 60, 60, 0.3);
+            }
+
+            .login-header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .login-header h1 {
+                color: #e0e0e0;
+                margin-bottom: 10px;
+            }
+
+            .login-header p {
+                color: #a0a0a0;
+                font-size: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #d0d0d0;
+                font-weight: bold;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #404040;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: border-color 0.3s ease;
+                background: #1e1e1e;
+                color: #ffffff;
+            }
+
+            .form-group input:focus {
+                outline: none;
+                border-color: #2196f3;
+            }
+
+            .login-btn {
+                width: 100%;
+                padding: 12px;
+                background: #4a90e2;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+            }
+
+            .login-btn:hover {
+                background: #357abd;
+            }
+
+            .error-message {
+                color: #e74c3c;
+                text-align: center;
+                margin-top: 10px;
+                display: none;
+            }
+
+            .success-message {
+                color: #4a90e2;
+                text-align: center;
+                margin-top: 10px;
+                display: none;
+            }
+
+            /* 푸터 스타일 */
+            .footer {
+                margin-top: 20px;
+                text-align: center;
+                padding: 15px 0;
+            }
+
+            .footer-links {
+                margin-bottom: 8px;
+            }
+
+            .footer-links a {
+                color: #a0a0a0;
+                text-decoration: none;
+                font-size: 12px;
+                transition: color 0.2s ease;
+            }
+
+            .footer-links a:hover {
+                color: #4a90e2;
+            }
+
+            .footer-links .separator {
+                color: #666;
+                margin: 0 8px;
+                font-size: 12px;
+            }
+
+            .footer-copyright {
+                color: #888;
+                font-size: 11px;
+            }
+
+            .footer-copyright .logo {
+                color: #4a90e2;
+                font-weight: bold;
+            }
+
+            /* 로그인 컨테이너 하단 여백 조정 */
+            .login-container {
+                margin-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main-content">
+            <div class="login-container">
+                <div class="login-header">
+                    <img
+                        src="/img/alhs-logo.svg"
+                        alt="ALHS Logo"
+                        style="width: 80px; height: auto; margin-bottom: 15px" />
+                    <h1>ALHS</h1>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">사용자명</label>
+                        <input type="text" id="username" name="username" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required />
+                    </div>
+
+                    <button type="submit" class="login-btn">로그인</button>
+                </form>
+
+                <div id="errorMessage" class="error-message">사용자명 또는 비밀번호가 올바르지 않습니다.</div>
+
+                <div id="successMessage" class="success-message">로그인 성공! 리다이렉트 중...</div>
+            </div>
+
+            <!-- 푸터 섹션 -->
+            <div class="footer">
+                <div class="footer-links">
+                    <!-- GitHub 링크: 실제 저장소 URL로 변경하세요 -->
+                    <a href="https://github.com/ALHS-Project/ALHS?tab=readme-ov-file" target="_blank">GitHub</a>
+                    <span class="separator">|</span>
+                    <a href="https://alhs-project.github.io/ALHS/" target="_blank">MyDocs</a>
+                    <span class="separator">|</span>
+                    <a href="#" onclick="alert('이용약관 페이지로 이동')">이용약관</a>
+                    <span class="separator">|</span>
+                    <a href="#" onclick="alert('개인정보처리방침 페이지로 이동')">개인정보처리방침</a>
+                </div>
+                <div class="footer-copyright">
+                    <span class="logo">
+                        <img
+                            src="/img/alhs-logo.svg"
+                            alt="ALHS Logo"
+                            style="width: 16px; height: auto; vertical-align: middle; margin-right: 4px" />
+                        ALHS
+                    </span>
+                    Copyright © ALHS Corp. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault()
+
+                const username = document.getElementById('username').value
+                const password = document.getElementById('password').value
+
+                // 간단한 인증 (실제로는 서버에서 처리해야 함)
+                if (username === 'admin' && password === 'admin123') {
+                    document.getElementById('errorMessage').style.display = 'none'
+                    document.getElementById('successMessage').style.display = 'block'
+
+                    // 로그인 상태를 세션 스토리지에 저장
+                    sessionStorage.setItem('isLoggedIn', 'true')
+                    sessionStorage.setItem('username', username)
+
+                    // 2초 후 메인 페이지로 리다이렉트
+                    setTimeout(() => {
+                        // 세션 스토리지에서 로그인 성공 플래그 제거
+                        sessionStorage.removeItem('loginSuccess')
+                        window.location.href = '/'
+                    }, 2000)
+                } else {
+                    document.getElementById('successMessage').style.display = 'none'
+                    document.getElementById('errorMessage').style.display = 'block'
+                }
+            })
+
+            // 페이지 로드 시 로그인 성공 메시지 숨기기
+            window.addEventListener('load', function () {
+                document.getElementById('successMessage').style.display = 'none'
+                document.getElementById('errorMessage').style.display = 'none'
+            })
+        </script>
+    </body>
+</html>
