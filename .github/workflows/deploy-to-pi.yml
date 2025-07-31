@@ -31,14 +31,14 @@ jobs:
           npm run build
 
       - name: Deploy to Raspberry Pi
-        uses: burnett01/rsync-deployments@5.2
+        uses: appleboy/ssh-action@v0.1.5
         with:
-          switches: -avzr --delete
-          path: mainsail/dist/
-          remote_path: /var/www/html/
-          remote_host: ${{ secrets.PI_HOST}}
-          remote_user: pi
-          remote_key: ${{ secrets.PI_SSH_KEY }}
+          host: ${{ secrets.PI_HOST }}
+          username: pi
+          key: ${{ secrets.PI_SSH_KEY }}
+          script: |
+            rm -rf /var/www/html/*
+            tar -czf - -C mainsail/dist . | tar -xzf - -C /var/www/html/
 
       - name: Set permissions
         uses: appleboy/ssh-action@v0.1.5
